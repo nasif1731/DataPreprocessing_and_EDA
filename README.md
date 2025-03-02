@@ -17,9 +17,9 @@ cd DataPreprocessing_and_EDA
 ```
 
 ## 📂 Project Structure
-- raw/: Contains the raw weather and electricity demand data.
-- processed/: Directory for saving cleaned and processed data.
-- README.md: This file.
+- **raw/**: Contains the raw weather and electricity demand data.
+- **processed/**: Directory for saving cleaned and processed data.
+- **README.md**: This file.
 
 ## 🧹 Data Preprocessing
 Data preprocessing is crucial for ensuring the quality and reliability of the analysis. The following steps were taken:
