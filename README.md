@@ -1,7 +1,7 @@
-# 📊 Data Analysis Report
+# 📊 Data Analysis Report On Electricity Demand and Weather Data
 
 ## 🌟 Overview
-Welcome to the **Data Analysis Report** repository! This project contains an in-depth statistical analysis of a dataset, focusing on essential aspects such as missing data handling, summary statistics, outlier analysis, multicollinearity assessment, and model evaluation. Dive in to discover valuable insights! 🚀
+Welcome to the **Data Analysis Report On Electricity Demand and Weather Data** repository! This project contains an in-depth statistical analysis of a dataset, focusing on essential aspects such as missing data handling, summary statistics, outlier analysis, multicollinearity assessment, and model evaluation. Dive in to discover valuable insights! 🚀
 
 ## 🔄 Cloning the Repository
 To get started with the code, clone this repository to your local machine using the following command:
@@ -16,6 +16,11 @@ Once cloned, navigate into the directory:
 cd DataPreprocessing_and_EDA
 ```
 
+## 📂 Project Structure
+- raw/: Contains the raw weather and electricity demand data.
+- processed/: Directory for saving cleaned and processed data.
+- README.md: This file.
+
 ## 🧹 Data Preprocessing
 Data preprocessing is crucial for ensuring the quality and reliability of the analysis. The following steps were taken:
 
@@ -29,6 +34,24 @@ EDA was conducted to understand the underlying patterns in the dataset. Key visu
 - 📊 **Histograms:** Showed the distribution of continuous variables.
 - 📦 **Boxplots:** Identified outliers and the spread of the data.
 - 🔗 **Correlation Matrix:** Assessed relationships between variables.
+
+### Code Snippet for EDA
+```python
+# Perform Exploratory Data Analysis
+def perform_eda(df):
+    # Statistical Summary
+    print("\nStatistical Summary:\n", df.describe())
+    
+    # Distribution Analysis
+    plt.figure(figsize=(12, 6))
+    plt.plot(df['timestamp'], df['electricity_demand'], label='Electricity Demand', color='b')
+    plt.xlabel("Timestamp")
+    plt.ylabel("Electricity Demand")
+    plt.title("Electricity Demand Over Time")
+    plt.legend()
+    plt.grid()
+    plt.show()
+```
 
 ### 1. 🚫 Handling Missing Data
 - **MCAR (Missing Completely at Random):** No correlation between missing values and observed data.
@@ -87,6 +110,18 @@ Variance Inflation Factor (VIF) was used to check for correlation among predicto
   - p-value: 0.00
   - Inference: Data is stationary, suitable for time series modeling.
 
+### Code Snippet for Model Training
+```python
+def train_regression(df):
+    features = ['hour', 'day_of_week', 'month', 'temperature', 'year', 'is_weekend']
+    X = df[features]
+    y = df['electricity_demand']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+```
+
 **Regression Model Metrics**
 
 | Metric | Value  |
@@ -103,6 +138,20 @@ Variance Inflation Factor (VIF) was used to check for correlation among predicto
 - Dataset is clean and standardized for analysis.
 - No missing values or multicollinearity issues.
 - Electricity demand distribution improved after outlier treatment.
+
+## 🛠️ Requirements
+Ensure you have the following packages installed:
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scipy
+- statsmodels
+- scikit-learn
+You can install the required packages using:
+```bash
+pip install pandas numpy matplotlib seaborn scipy statsmodels scikit-learn
+```
 
 🔮 **Future Work:** Explore advanced feature engineering or alternative models.
 
